@@ -18,7 +18,7 @@ const App = () => {
   };
 
   const zero = () => {
-    setResult(0);
+    setResult("");
   };
 
   return (
