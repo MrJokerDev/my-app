@@ -7,7 +7,7 @@ const App = () => {
 
   const btnClick = (e) => {
     var value = e.target.value;
-    console.log(value);
+    setResult(value);
   };
 
   const clear = () => {
