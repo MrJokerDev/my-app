@@ -1,6 +1,29 @@
 import "./App.css";
+import { useState } from "react";
+import * as math from "mathjs";
 
 const App = () => {
+  const [result, setResult] = useState(0);
+
+  const btnClick = (e) => {
+    var value = e.target.value;
+    if (result === 0) {
+      setResult(value);
+    } else if (value === "=") {
+      setResult(math.evaluate(result));
+    } else {
+      setResult(result + value);
+    }
+  };
+
+  const clear = () => {
+    setResult(result.toString().slice(0, -1));
+  };
+
+  const zero = () => {
+    setResult(0);
+  };
+
   return (
     <div className="App">
       <div className="display">
