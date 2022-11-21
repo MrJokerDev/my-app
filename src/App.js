@@ -1,25 +1,112 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import * as math from "mathjs";
 
-function App() {
+const App = () => {
+  const [result, setResult] = useState(0);
+
+  const btnClick = (e) => {
+    var value = e.target.value;
+    if (result === 0) {
+      setResult(value);
+    } else if (value === "=") {
+      setResult(math.evaluate(result));
+    } else {
+      setResult(result + value);
+    }
+  };
+
+  const clear = () => {
+    setResult(result.toString().slice(0, -1));
+  };
+
+  const zero = () => {
+    setResult(0);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <div className="display">
+        <input type="text" value={result} />
+      </div>
+
+      <div className="keys">
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <button className="button black" onClick={zero} defaultValue="clear">
+            CE
+          </button>
+          <button className="button black" onClick={clear} defaultValue="C">
+            C
+          </button>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+        <p>
+          <button
+            className="button black"
+            onClick={btnClick}
+            value="7"
+            name="7"
+          >
+            7
+          </button>
+          <button className="button black" onClick={btnClick} value="8">
+            8
+          </button>
+          <button className="button black" onClick={btnClick} value="9">
+            9
+          </button>
+          <button className="button pink" onClick={btnClick} value="+">
+            +
+          </button>
+        </p>
+
+        <p>
+          <button className="button black" onClick={btnClick} value="4">
+            4
+          </button>
+          <button className="button black" onClick={btnClick} value="5">
+            5
+          </button>
+          <button className="button black" onClick={btnClick} value="6">
+            6
+          </button>
+          <button className="button pink" onClick={btnClick} value="-">
+            -
+          </button>
+        </p>
+
+        <p>
+          <button className="button black" onClick={btnClick} value="1">
+            1
+          </button>
+          <button className="button black" onClick={btnClick} value="2">
+            2
+          </button>
+          <button className="button black" onClick={btnClick} value="3">
+            3
+          </button>
+          <button className="button pink" onClick={btnClick} value="*">
+            *
+          </button>
+        </p>
+
+        <p>
+          <button className="button black" onClick={btnClick} value="0">
+            0
+          </button>
+          <button className="button black" onClick={btnClick} value=".">
+            .
+          </button>
+          <button className="button orange" onClick={btnClick} value="=">
+            =
+          </button>
+          <button className="button pink" onClick={btnClick} value="/">
+            /
+          </button>
+        </p>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
