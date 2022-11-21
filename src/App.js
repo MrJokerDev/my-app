@@ -1,9 +1,8 @@
 import { useState } from "react";
 import "./App.css";
-import * as math from "mathjs";
 
 const App = () => {
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState("");
 
   const btnClick = (e) => {
     var value = e.target.value;
