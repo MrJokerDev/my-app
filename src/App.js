@@ -7,7 +7,11 @@ const App = () => {
 
   const btnClick = (e) => {
     var value = e.target.value;
-    setResult(value);
+    if (result === 0) {
+      setResult(value);
+    } else {
+      setResult(result + value);
+    }
   };
 
   const clear = () => {
