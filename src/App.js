@@ -8,7 +8,7 @@ const App = () => {
   const btnClick = (e) => {
     var value = e.target.value;
     if (value === "=") {
-      setResult(math.evaluate(result));
+      setResult(eval(result));
     } else {
       setResult(result + value);
     }
